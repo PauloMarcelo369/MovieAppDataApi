@@ -12,10 +12,7 @@ app.get("/movies", (req, res) => {
 app.get("/movies/search", (req, res) => {
   const { query } = req.query;
 
-  if (!query || query.trim().length === 0) {
-    return res.status(400).json({ message: "Search query cannot be empty" });
-  }
-
+ 
   const results = filmList.filter((movie) => {
     return movie.title.toLowerCase().includes(query.toLowerCase());
   });
