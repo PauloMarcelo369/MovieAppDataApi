@@ -12,7 +12,11 @@ app.get("/movies", (req, res) => {
 app.get("/movies/search", (req, res) => {
   const { query } = req.query;
 
- 
+  if (!query || query.trim().length === 0) {
+    // Retorna todos os filmes se a query estiver vazia
+    return res.json(filmList);
+  }
+
   const results = filmList.filter((movie) => {
     return movie.title.toLowerCase().includes(query.toLowerCase());
   });
