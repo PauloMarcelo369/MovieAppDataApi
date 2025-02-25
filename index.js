@@ -47,7 +47,7 @@ app.get("/movies/relatedMovies", (req, res) => {
   const selectedGenres = query.split(",").map((genre) => genre.trim());
 
   const related_movies = filmList.filter((movie) => {
-    movieGenres = movie.genre.split(",").map((filme) => filme.trim());
+    const movieGenres = movie.genre.split(",").map((filme) => filme.trim());
     return selectedGenres.every((item) => movieGenres.includes(item));
   });
 
