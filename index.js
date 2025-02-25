@@ -24,19 +24,6 @@ app.get("/movies/search", (req, res) => {
   res.json(results);
 });
 
-app.get("/movies/:name", (req, res) => {
-  const name = req.params.name.toLowerCase();
-  const movie = filmList.find((movie) => {
-    return movie.title.toLowerCase() === name;
-  });
-
-  if (movie) {
-    res.json(movie);
-  } else {
-    res.status(404).json({ message: "Movie Not Found" });
-  }
-});
-
 app.get("/movies/relatedMovies", (req, res) => {
   const { query } = req.query;
 
@@ -52,6 +39,19 @@ app.get("/movies/relatedMovies", (req, res) => {
   });
 
   res.json(related_movies);
+});
+
+app.get("/movies/:name", (req, res) => {
+  const name = req.params.name.toLowerCase();
+  const movie = filmList.find((movie) => {
+    return movie.title.toLowerCase() === name;
+  });
+
+  if (movie) {
+    res.json(movie);
+  } else {
+    res.status(404).json({ message: "Movie Not Found" });
+  }
 });
 
 app.listen(3000, () => {
