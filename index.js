@@ -37,7 +37,7 @@ app.get("/movies/:name", (req, res) => {
   }
 });
 
-app.get("movies/relatedMovies", (req, res) => {
+app.get("/movies/relatedMovies", (req, res) => {
   const { query } = req.query;
 
   if (!query || query.trim().length === 0) {
